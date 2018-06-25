@@ -1,8 +1,10 @@
-$(document).ready(function() {
+$(document).ready(() => {
 
   // Use jQuery to get a reference to `load-songs`
+  const $loadSongs = $("#load-songs");
 
   // Use jQuery to get a reference to `song-list`
+  const $songList = $("#song-list");
 
 
   /*
@@ -10,6 +12,13 @@ $(document).ready(function() {
       the button is clicked, use $.ajax() to load `songs.json`
       from the file system
   */
+  $loadSongs.click(() => {
+    $.ajax("./scripts/songs.json").then(response => {
+      console.log(response);
+    });
+  });
+
+
 
 
   /*
@@ -26,4 +35,4 @@ $(document).ready(function() {
               </section>
           </section>
   */
-})
+});
