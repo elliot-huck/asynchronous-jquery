@@ -15,6 +15,15 @@ $(document).ready(() => {
   $loadSongs.click(() => {
     $.ajax("./scripts/songs.json").then(response => {
       console.log(response);
+      response.songs.forEach(element => {
+        const $songCard = $("<section>").addClass("song");
+        const $songTitle = $("<h2>").text(`${element.title}`)
+        $songTitle.addClass("song__title").appendTo($songCard);
+        const $songDescription = $("<section>").text(`Performed by ${element.artist} on the album "${element.album}"`);
+        $songDescription.addClass("song__description").appendTo($songCard);
+        $songCard.appendTo($songList);
+      });
+
     });
   });
 
